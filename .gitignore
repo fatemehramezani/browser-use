@@ -23,7 +23,7 @@ dist/
 *.gif
 *.txt
 *.pdf
-*.csv
+#*.csv
 *.json
 *.jsonl
 
