@@ -45,7 +45,7 @@ class Job(BaseModel):
 class Jobs(BaseModel):
     jobs: List[Job]
 
-api_key = 'AIzaSyCOyB0l5gFzT3Ik2E-jiJqvPbqY-dEswlg'
+api_key = 'AIzaSyBd8XmIXkxB2gZiRZr3VYRrpbE5b8C8R3Y'
 if not api_key:
     raise ValueError('GOOGLE_API_KEY is not set')
 
@@ -67,6 +67,7 @@ class CompanyCrawler:
                 user_data_dir='~/.config/browseruse/profiles/default',
             )
         )
+        self.API_error = False   
 
     def load_companies(self):
         """Load companies from CSV file"""
@@ -161,13 +162,13 @@ class CompanyCrawler:
                 parsed: Jobs = Jobs.model_validate_json(result)
                 logger.warning(f"{len(parsed.jobs)} jobs are extracted for '{company_code}' ('{website}')")
                 return parsed.jobs
-
             else:
                 logger.warning(f"Unable to parse output for '{company_code}' ('{website}')")
                 return []
 
 
         except Exception as e:
+            self.API_error = True
             logger.error(f"Error searching '{company_code}' ('{website}'): {e}")
             return []
 
@@ -235,6 +236,8 @@ class CompanyCrawler:
                 # Search for positions
                 jobs = await self.run_search_for_company(company_code, website)
                 
+                if(self.API_error):
+                    return
                 # Add jobs to our collection
                 if(jobs != [] and len(jobs) > 0):
                     self.all_jobs.extend(jobs)
@@ -270,6 +273,9 @@ async def main():
             crawler = CompanyCrawler()
             crawler.default()
             await crawler.process_all_companies()
+            if(crawler.API_error):
+                logger.error(f"Failed beacuse of invalid API Key")        
+                break
             i = i + 1
     except Exception as e:
         logger.error(f"Failed: {e}")
