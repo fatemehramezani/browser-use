@@ -155,7 +155,7 @@ class CompanyCrawler:
                 browser_session=self.browser_session,
             )
 
-            history_list = await agent.run()
+            history_list = await agent.run(max_steps=25)
             result = history_list.final_result()
             if result:
                 parsed: Jobs = Jobs.model_validate_json(result)
@@ -266,7 +266,7 @@ async def main():
     """Main function to run the crawler"""
     try:
         i = 1
-        while(i < 5):
+        while(i < 1000):
             crawler = CompanyCrawler()
             crawler.default()
             await crawler.process_all_companies()
