@@ -45,7 +45,7 @@ class Job(BaseModel):
 class Jobs(BaseModel):
     jobs: List[Job]
 
-api_key = 'AIzaSyCFp-0UYykakbsnPAMA4n-0Md3fku8ReEU'
+api_key = 'AIzaSyDMWdCkBF1sZJpmRlS7gv3k37FlqcU197Q'
 if not api_key:
     raise ValueError('GOOGLE_API_KEY is not set')
 
