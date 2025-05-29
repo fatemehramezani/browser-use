@@ -546,11 +546,10 @@ company_code,company_website,crawled
 30067102,http://www.brandnewday.nl/Over_ons/contact.html#Contactgegevens,True
 56476779,http://www.brandnewday.nl/Over_ons/contact.html#Contactgegevens,True
 27112013,https://stroom.com/werken-bij/,True
-69645388,https://brandclick.nl/nl,False
-77930703,https://bravinci.com/contact-jobs/,False
-51837498,https://bravoure.nl/en/about,False
-74299913,https://www.breachlock.com/about/contact/,False
-24373958,https://app.breadbox-shipping.com/public/document/11/breadbox-shipping-lines-open-positions-1160.pdf,False
+69645388,https://brandclick.nl/nl,True
+77930703,https://bravinci.com/contact-jobs/,True
+51837498,https://bravoure.nl/en/about,True
+74299913,https://www.breachlock.com/about/contact/,True
 80045944,https://breeze.social/nl/contact,False
 67078583,https://careers.brenger.nl/,False
 51446030,https://www.briddge.com/contact/,False
@@ -984,3 +983,4 @@ company_code,company_website,crawled
 24146017,https://www.dataflex-int.com/nl/support/contact,False
 83000828,https://www.dataiku.com/careers/,False
 72782234,https://datalane.nl/en/careers,False
+24373958,https://app.breadbox-shipping.com/public/document/11/breadbox-shipping-lines-open-positions-1160.pdf,False
