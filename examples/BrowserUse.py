@@ -47,9 +47,9 @@ class Jobs(BaseModel):
 
 #93: Done
 #Hosseini: Done
-#931: Running
-#ahmad: AIzaSyAKrRNju_278I8m2hY9tjkl0m26_8skx5o
-api_key = 'AIzaSyDMWdCkBF1sZJpmRlS7gv3k37FlqcU197Q'
+#931: Donr
+#ahmad: 
+api_key = 'AIzaSyAKrRNju_278I8m2hY9tjkl0m26_8skx5o'
 if not api_key:
     raise ValueError('GOOGLE_API_KEY is not set')
 
