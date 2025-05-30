@@ -1,0 +1,24 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/fatemehramezani/browser-use.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+	vscode-merge-base = origin/main
+[lfs]
+	repositoryformatversion = 0
+[branch "ـخذس"]
+	vscode-merge-base = origin/main
+[branch "Jobs"]
+	vscode-merge-base = origin/main
+	remote = origin
+	merge = refs/heads/Jobs
+[lfs "https://github.com/fatemehramezani/browser-use.git/info/lfs"]
+	access = basic
