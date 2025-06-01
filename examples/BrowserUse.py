@@ -45,19 +45,26 @@ class Job(BaseModel):
 class Jobs(BaseModel):
     jobs: List[Job]
 
-#93: AIzaSyC1rTe8FKTGEci8WTJ-KFSkiDmGHyiq_LA
-#Elham: AIzaSyB0EJBSh2FNHRQfb8Ynm-idT4ePG544LOg
-#931: AIzaSyDPgcdyDKhSdfibxhGWnSnDjzzXfIhPGuU
+#93: done
+#Elham: done
+#931: running
 #ahmad: AIzaSyDVdIsjplqb3fRo_wvrv-vr-5Zk_SZQmic
 #Hosseini: 
-#
-#
-#
-#
+# 1.
+# AIzaSyDFtvObxd2zMsw4F5PWTQ1GOj3iH6wB88U
+# 2.
+# AIzaSyCKU6LDHUuinp39fBjfFrirgH1EdqpjyRE
+# 3.
+# AIzaSyCb1HwxOAsmQuy9jsRsPX0mo4XB4m-nD04
+# 4.
+# AIzaSyBgyXKz3S8mNkguBJElpCcWQKkaStkutj8
+# 5.
+# AIzaSyBFXN4exix5Oe3GL0qBKb9GAqAR3zzM2Zg
 
+#75857448: https://www.vici-nl.com/sites/default/files/2023-11/vici_data_engineer.pdf
 #78459702, https://cloudlife.nl/wp-content/uploads/2025/03/Functieprofiel-Senior-Cyber-Security-Consultant.pdf
 #71032258, https://www.abengineeringenconsultancy.com/werkenbij/Vacature_office_projects_coordinator.pdf
-api_key = 'AIzaSyBa9EE75NEoNOn3gPFT9qGS46BZNfq-e78'
+api_key = 'AIzaSyDPgcdyDKhSdfibxhGWnSnDjzzXfIhPGuU'
 if not api_key:
     raise ValueError('GOOGLE_API_KEY is not set')
 
