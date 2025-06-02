@@ -48,7 +48,8 @@ class Job(BaseModel):
 class Jobs(BaseModel):
     jobs: List[Job]
 
-#93: AIzaSyDp4NddlAZNUH6YBQOxGFWPigfeKmqnmHE
+#93: 
+# AIzaSyCILWQ6gOGfw1rxqNCs378jrzkSMQt7yAE
 #Elham: done
 #931: done
 #ahmad: done
@@ -67,7 +68,7 @@ class Jobs(BaseModel):
 #75857448: https://www.vici-nl.com/sites/default/files/2023-11/vici_data_engineer.pdf
 #78459702, https://cloudlife.nl/wp-content/uploads/2025/03/Functieprofiel-Senior-Cyber-Security-Consultant.pdf
 #71032258, https://www.abengineeringenconsultancy.com/werkenbij/Vacature_office_projects_coordinator.pdf
-api_key = 'AIzaSyBFXN4exix5Oe3GL0qBKb9GAqAR3zzM2Zg'
+api_key = 'AIzaSyAieRm6cSLjbKP6wWHBj6Qdl6vputCfV1s'
 if not api_key:
     raise ValueError('GOOGLE_API_KEY is not set')
 
