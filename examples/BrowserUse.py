@@ -20,6 +20,9 @@ from browser_use import Agent, Controller
 from browser_use.agent.views import AgentHistoryList
 from browser_use import Agent
 from browser_use.browser import BrowserProfile, BrowserSession
+import logging
+from google.api_core.exceptions import ResourceExhausted
+from langchain_core.exceptions import LangChainException
 
 os.environ["ANONYMIZED_TELEMETRY"] = "false"
 
@@ -45,7 +48,7 @@ class Job(BaseModel):
 class Jobs(BaseModel):
     jobs: List[Job]
 
-#93: done
+#93: AIzaSyDp4NddlAZNUH6YBQOxGFWPigfeKmqnmHE
 #Elham: done
 #931: done
 #ahmad: done
@@ -55,7 +58,7 @@ class Jobs(BaseModel):
 # 2.
 # 
 # 3.
-# AIzaSyCb1HwxOAsmQuy9jsRsPX0mo4XB4m-nD04
+# 
 # 4.
 # AIzaSyBgyXKz3S8mNkguBJElpCcWQKkaStkutj8
 # 5.
@@ -64,7 +67,7 @@ class Jobs(BaseModel):
 #75857448: https://www.vici-nl.com/sites/default/files/2023-11/vici_data_engineer.pdf
 #78459702, https://cloudlife.nl/wp-content/uploads/2025/03/Functieprofiel-Senior-Cyber-Security-Consultant.pdf
 #71032258, https://www.abengineeringenconsultancy.com/werkenbij/Vacature_office_projects_coordinator.pdf
-api_key = 'AIzaSyCKU6LDHUuinp39fBjfFrirgH1EdqpjyRE'
+api_key = 'AIzaSyCb1HwxOAsmQuy9jsRsPX0mo4XB4m-nD04'
 if not api_key:
     raise ValueError('GOOGLE_API_KEY is not set')
 
@@ -132,10 +135,8 @@ class CompanyCrawler:
             logger.info("No positions found to save")
             return
         
-        try:
-            print('108')                        
+        try:                     
             self.write_list_to_csv(self.all_jobs,self.jobs_csv_path)
-            print('114')
             logger.info(f"Saved '{len(self.all_jobs)}' jobs to '{self.jobs_csv_path}'")
         except Exception as e:
             logger.error(f"Error saving jobs JSON: {e}")
@@ -177,16 +178,35 @@ class CompanyCrawler:
 
             history_list = await agent.run(max_steps=25)
             result = history_list.final_result()
+            print('Fatemeh: 178')
             if result:
+                print('Fatemeh: 180')
                 parsed: Jobs = Jobs.model_validate_json(result)
                 logger.warning(f"{len(parsed.jobs)} jobs are extracted for '{company_code}' ('{website}')")
                 return parsed.jobs
             else:
+                print('Fatemeh: 185')
                 logger.warning(f"Unable to parse output for '{company_code}' ('{website}')")
                 return []
 
-
+        except ResourceExhausted as e:
+            print('Fatemeh: 193')
+            self.API_error = True            
+            print(f"❌ Gemini API quota exceeded: {e}")
+            print("Please check your billing and quota limits at: https://ai.google.dev/gemini-api/docs/rate-limits")
+            # Optionally log the error
+            logger.error(f"ResourceExhausted error: {e}")
+            # Stop the program gracefully
+            return None  # or raise/exit depending on your needs
+            
+        except LangChainException as e:
+            print('Fatemeh: 203')
+            self.API_error = True
+            print(f"❌ LangChain error occurred: {e}")
+            logger.error(f"LangChain error: {e}")
+            return None
         except Exception as e:
+            print('Fatemeh: 209')
             self.API_error = True
             logger.error(f"Error searching '{company_code}' ('{website}'): {e}")
             return []
