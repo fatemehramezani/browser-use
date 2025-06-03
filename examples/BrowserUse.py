@@ -50,30 +50,44 @@ class Jobs(BaseModel):
 
 #93: 
 # 
-# AIzaSyCUIkbda5adXYPoBvbDUitLqFtfk9jhONs
+# 
 #Elham: done
 #931: 
-# AIzaSyCBLvKG0fCK5NzHUKdPH1XyxuV7izfj5PY
-# AIzaSyAO2OrhRIfHjnev_HbjBOTdU-xpSxij5u0
+# 
+# 
 #ahmad: 
 # AIzaSyCRMoxzYpShqxmtAaKutP6pKkx0DbOdINU
 # AIzaSyDXGKJ9gN7RddfFSD_iva9OM2VoxjSgf-M
 #Hosseini: 
-# 1.
-# 
+# AIzaSyBbx8KVPQt1loNGzM9bkt64k3qefzydhqU
 # 2.
-# 
+# AIzaSyCnYyY678SMNNHH4SQREf52Q4vpksOcQ3s
 # 3.
-# 
+# AIzaSyAZInOOu73WNWWJ0nbZGR3TzwpfKNYjGQA
 # 4.
-# 
+# AIzaSyBQ6JKSmZlpcDVdZ6hqv-WcncUiahWsV2Y
 # 5.
-# 
-
+# AIzaSyCefVQmJjJgY4-zEufn3ouiJNE05nnicBM
+# 6.
+# AIzaSyAjDhHjrMXgOz35K0RLdaQ2cTQ1EeZ9v0s
+# 7.
+# AIzaSyDjqEVJ93zdRBJmDLtRYitvinTIM1dFXko
+# 8.
+# AIzaSyDSrKh5FBwzxrzdgivCKAXgCHO0mce8BBI
+# 9.
+# AIzaSyCnmmCqC4ad2e_-FxQ9BcBDeR-evyNjIWI
+# 10.
+# AIzaSyA1gccztqpfaswVjgG8gq-Jf91ELOauvBA
+# 11.
+# AIzaSyAPSgcwbKLiP7tPJEMuBlQaM9O-qLKi7z0
+# 12.
+# AIzaSyASyktk_1yPg9kq6B9_skpkP9oiuH4RKic
+#https://www.jobat.be/nl
 #75857448: https://www.vici-nl.com/sites/default/files/2023-11/vici_data_engineer.pdf
 #78459702, https://cloudlife.nl/wp-content/uploads/2025/03/Functieprofiel-Senior-Cyber-Security-Consultant.pdf
 #71032258, https://www.abengineeringenconsultancy.com/werkenbij/Vacature_office_projects_coordinator.pdf
-api_key = 'AIzaSyCILWQ6gOGfw1rxqNCs378jrzkSMQt7yAE'
+#https://abengineeringenconsultancy.com/werkenbij/Vacature_office_projects_coordinator.pdf
+api_key = 'AIzaSyAO2OrhRIfHjnev_HbjBOTdU-xpSxij5u0'
 if not api_key:
     raise ValueError('GOOGLE_API_KEY is not set')
 
@@ -287,8 +301,9 @@ class CompanyCrawler:
                 if(self.API_error):
                     return
                 # Add jobs to our collection
-                if(jobs != [] and len(jobs) > 0):
-                    self.all_jobs.extend(jobs)
+                if(jobs == [] or len(jobs) < 1):
+                    return
+                self.all_jobs.extend(jobs)
                 
                 # Mark company as crawled
                 df_companies.loc[df_companies['company_code'] == company_code, 'crawled'] = True
@@ -302,7 +317,7 @@ class CompanyCrawler:
                 # Add a small delay between companies to be respectful
                 await asyncio.sleep(2)
 
-                # TODO: Fatemeh
+                # TODO: Fatemeh, added this to crawl one company each time
                 print(f'Checking company = {index}')
                 if(index > 1):
                     break
