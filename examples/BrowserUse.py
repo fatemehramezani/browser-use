@@ -49,9 +49,12 @@ class Jobs(BaseModel):
     jobs: List[Job]
 
 #93: 
-# AIzaSyCILWQ6gOGfw1rxqNCs378jrzkSMQt7yAE
+# 
+# AIzaSyCUIkbda5adXYPoBvbDUitLqFtfk9jhONs
 #Elham: done
-#931: done
+#931: 
+# AIzaSyCBLvKG0fCK5NzHUKdPH1XyxuV7izfj5PY
+# AIzaSyAO2OrhRIfHjnev_HbjBOTdU-xpSxij5u0
 #ahmad: 
 # AIzaSyCRMoxzYpShqxmtAaKutP6pKkx0DbOdINU
 # AIzaSyDXGKJ9gN7RddfFSD_iva9OM2VoxjSgf-M
@@ -70,11 +73,14 @@ class Jobs(BaseModel):
 #75857448: https://www.vici-nl.com/sites/default/files/2023-11/vici_data_engineer.pdf
 #78459702, https://cloudlife.nl/wp-content/uploads/2025/03/Functieprofiel-Senior-Cyber-Security-Consultant.pdf
 #71032258, https://www.abengineeringenconsultancy.com/werkenbij/Vacature_office_projects_coordinator.pdf
-api_key = 'AIzaSyAieRm6cSLjbKP6wWHBj6Qdl6vputCfV1s'
+api_key = 'AIzaSyCILWQ6gOGfw1rxqNCs378jrzkSMQt7yAE'
 if not api_key:
     raise ValueError('GOOGLE_API_KEY is not set')
 
-llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash-exp', api_key=SecretStr(api_key))
+llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash-exp', 
+                            api_key=SecretStr(api_key), 
+                            max_retries=0 # Set to 0 to stop immediately on API errors
+                            )
 
 class CompanyCrawler:
     def __init__(self, companies_csv_path='companies.csv', jobs_csv_path='jobs.csv'):
