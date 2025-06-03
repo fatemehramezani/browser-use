@@ -56,7 +56,7 @@ class Jobs(BaseModel):
 # 
 # 
 #ahmad: 
-# AIzaSyCRMoxzYpShqxmtAaKutP6pKkx0DbOdINU
+# 
 # AIzaSyDXGKJ9gN7RddfFSD_iva9OM2VoxjSgf-M
 #Hosseini: 
 # AIzaSyBbx8KVPQt1loNGzM9bkt64k3qefzydhqU
@@ -87,7 +87,7 @@ class Jobs(BaseModel):
 #78459702, https://cloudlife.nl/wp-content/uploads/2025/03/Functieprofiel-Senior-Cyber-Security-Consultant.pdf
 #71032258, https://www.abengineeringenconsultancy.com/werkenbij/Vacature_office_projects_coordinator.pdf
 #https://abengineeringenconsultancy.com/werkenbij/Vacature_office_projects_coordinator.pdf
-api_key = 'AIzaSyAO2OrhRIfHjnev_HbjBOTdU-xpSxij5u0'
+api_key = 'AIzaSyCRMoxzYpShqxmtAaKutP6pKkx0DbOdINU'
 if not api_key:
     raise ValueError('GOOGLE_API_KEY is not set')
 
